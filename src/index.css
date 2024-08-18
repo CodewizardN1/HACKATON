@@ -1,4 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body{
   font-family: 'SF Pro Display', sans-serif;
 }
