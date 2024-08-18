@@ -3,7 +3,7 @@ import Home from "./pages/home"
 
 const App = () => {
     return (
-        <div>
+        <div className="bg-[#F5F5F5] min-h-screen">
             <Routes>
                 <Route path="/" element={<Home/>} />
             </Routes>
