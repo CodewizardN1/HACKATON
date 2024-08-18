@@ -1,25 +1,24 @@
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo_large.png"
 import Wrapper from "../../layout/wrapper"
 
 const Footer = () => {
     return (
         <div className='w-[100%] h-[500px]  bg-[#333333]  items-center justify-center  py-[15px]' >
             <Wrapper>
-                <div className='flex align-middle gap-[1px] h-[57px] ml-[620px] mt-[20px] ' >
+                <div className='flex align-middle gap-[1px] h-[57px] justify-center mb-[15px] ' >
                     {/* <img src={img3} alt="" /> */}
 
                     <div className='mt-[10px] color-[white] '>
                         <img className='' src={logo} alt="" />
-                        <h4 className='text-[10px] text-[white]'>ХОЗТОВАРЫ С ДОСТАВКОЙ</h4>
                     </div>
 
                 </div>
 
-                <div className='max-w-[1400px] items-center justify-center ml-14  py-[10px]  '>
+                <div className='items-center justify-center  py-[10px]  '>
                     <hr />
                 </div>
 
-                <div className=' pt-[10px] text-[white]  flex items-center  justify-around'>
+                <div className=' pt-[10px] text-[white]  flex items-center  justify-between'>
                     <div>
                         <div>
                             <h3>Разделы сайта</h3>
@@ -78,12 +77,12 @@ const Footer = () => {
                     </div>
 
                 </div>
-                <div className='max-w-[1400px] items-center justify-center ml-14  py-[10px]  '>
+                <div className='items-center justify-between  py-[10px]  '>
                     <hr />
                 </div>
 
 
-                <div className='text-[grey] pt-[20px]   flex  items-center justify-around'>
+                <div className='text-[grey] pt-[20px]   flex  items-center justify-between'>
                     <div>
                     <ul>
                         <li>Политика компании в отношении обработки <br />
