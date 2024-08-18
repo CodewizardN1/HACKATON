@@ -7,3 +7,6 @@
 body{
   font-family: 'SF Pro Display', sans-serif !important;
 }
+.search::placeholder{
+  font-size: 10px !important;
+ }
