@@ -7,3 +7,14 @@
 body{
   font-family: 'SF Pro Display', sans-serif !important;
 }
+
+.swiper {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.swiper-slide {
+    margin: 0 !important;
+    width: fit-content !important;
+    padding: 0 !important;
+}
