@@ -22,6 +22,8 @@ const Navbar = () => {
 
     const [loading, setLoading] = useState(false)
 
+
+    // user qo'shish uchun
     const createUser = () => {
         if (name && surename && username && password) {
             setLoading(true)
@@ -40,6 +42,8 @@ const Navbar = () => {
         }
     };
 
+
+    // login uchun
     const loginUser = () => {
         if (username && password) {
             setLoading(true)
@@ -51,7 +55,8 @@ const Navbar = () => {
                 .then((res) => {
                     document.getElementById("my_modal_3").close();
                     localStorage.setItem("token", res.data.token)
-                    window.location.reload()
+                    localStorage.setItem("username", username)
+                    window.location.href = "/add"
                 });
         }
     }
@@ -415,63 +420,4 @@ const Navbar = () => {
     );
 };
 
-<<<<<<< HEAD
-
-{/* inputs */}
-      <div className='pt-5 flex flex-col'>
-        <label className='flex flex-col'>
-        Имя
-        <input type="text" placeholder="Имя" className="input w-ful outline-none  border-[#CECDCD] w-[100%] rounded-none" style={{outline: "0", border: '1px solid #CECDCD'}} />
-        </label>
-        <label className='flex flex-col'>
-        Фамилия
-        <input type="text" placeholder="Фамилия" className="input w-ful outline-none  border-[#CECDCD] w-[100%] rounded-none" style={{outline: "0", border: '1px solid #CECDCD'}} />
-        </label>
-        <label className='flex flex-col'>
-        Имя пользователя
-        <input type="text" placeholder="Имя пользователя" className="input w-ful outline-none  border-[#CECDCD] w-[100%] rounded-none" style={{outline: "0", border: '1px solid #CECDCD'}} />
-        </label>
-        <label className='flex flex-col'>
-        пароль
-        <input type="text" placeholder="пароль" className="input w-ful outline-none  border-[#CECDCD] w-[100%] rounded-none" style={{outline: "0", border: '1px solid #CECDCD'}} />
-        </label>
-
-        <Link className='text-[14px] font-[700] text-[#0094FF]'>если у вас есть учетная запись</Link>
-
-        <button className='btn w-[100%  ] h-[40px] text-white bg-[#E24C55] rounded-none mt-3'>Зарегистрироваться</button>
-      </div>
-
-      
-      </div>
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-          </div>
-        </div>
-      </Wrapper>
-      <div className='w-[100%] h-[1px] bg-[#D7D7D7] mt-2'></div>
-
-      <Wrapper>
-      <div className='flex justify-between text-[16px] font-[600] my-4'>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Главная</h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Акции</h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Распродажа</h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Оплата и доставка </h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Гарантия и возврат</h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>О нас</h1>
-        <h1 className='hover:text-[gray] duration-200 cursor-pointer'>Контакты</h1>
-
-      </div>
-      </Wrapper>
-
-
-        
-    </div>
-  )
-}
-
-export default Navbar
-=======
 export default Navbar;
->>>>>>> a19dd050e1204763a01279670be2bf65e3c25491

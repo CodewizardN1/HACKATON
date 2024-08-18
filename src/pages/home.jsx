@@ -6,9 +6,6 @@ import logo_info from "../assets/logo_info.png"
 import Checkbox from "../components/checkbox/checkbox"
 import Card from "../components/card/card"
 
-<<<<<<< HEAD
-const InfoBlock = ({ icon, text }) => {
-=======
 import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -18,8 +15,9 @@ import 'swiper/css/pagination';
 
 import { EffectFade, Autoplay } from 'swiper/modules';
 
+
+// Icon va textli blocklar uchun alohida component
 const InfoBlock = ({icon, text}) => {
->>>>>>> a19dd050e1204763a01279670be2bf65e3c25491
     return (
         <div className="max-w-[182px] flex flex-col justify-center items-center gap-[10px]">
             {icon}
@@ -67,6 +65,7 @@ const Home = () => {
     };
     const [isOpenDropdown, setOpenDropdown] = useState(false)
 
+    // dropdown ishlashi uchun
     const [tab, setTab] = useState("По популярности")
 
     return (
@@ -227,6 +226,8 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="">
+
+                                    {/* Herodagi rasmlarga swiper */}
                                     <Swiper
                                         slidesPerView={1.3}
                                         autoplay={{
@@ -270,12 +271,11 @@ const Home = () => {
                                         <p className="text-[#333]">Со скидкой</p>
                                     </div>
                                 </div>
+
+
+                                {/* dropdown */}
                                 <div className="dropdown dropdown-end">
-<<<<<<< HEAD
-                                    <div onFocus={() => setOpenDropdown(prev => !prev)} onBlur={() => setOpenDropdown(prev => !prev)} tabIndex={0} role="button" className="text-[#333] flex items-center justify-end gap-[15px]">По популярности
-=======
                                     <div onFocus={() => setOpenDropdown(prev => !prev)} onBlur={() => setOpenDropdown(prev => !prev)} tabIndex={0} role="button" className="text-[#333] flex items-center justify-end gap-[15px]">{tab}
->>>>>>> a19dd050e1204763a01279670be2bf65e3c25491
                                         <svg className={`${isOpenDropdown && "rotate-180"} transition-all`} xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none">
                                             <path d="M10.0214 0.23208L18.7851 9.65276C19.0721 9.96142 19.0716 10.4611 18.7837 10.7693C18.4957 11.0772 18.0293 11.0764 17.7421 10.7677L9.49996 1.90776L1.25785 10.768C0.970629 11.0767 0.504501 11.0775 0.216534 10.7696C0.0721779 10.6151 0 10.4128 0 10.2104C0 10.0086 0.0716934 9.80699 0.215048 9.6528L8.97858 0.23208C9.11655 0.0834198 9.30432 0 9.49996 0C9.6956 0 9.88315 0.0836582 10.0214 0.23208Z" fill="#828282" />
                                         </svg>
