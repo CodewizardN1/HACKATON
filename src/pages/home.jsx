@@ -15,6 +15,8 @@ import 'swiper/css/pagination';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
+
+// Icon va textli blocklar uchun alohida component
 const InfoBlock = ({icon, text}) => {
     return (
         <div className="max-w-[182px] flex flex-col justify-center items-center gap-[10px]">
@@ -63,6 +65,7 @@ const Home = () => {
     };
     const [isOpenDropdown, setOpenDropdown] = useState(false)
 
+    // dropdown ishlashi uchun
     const [tab, setTab] = useState("По популярности")
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
@@ -280,6 +283,9 @@ const Home = () => {
                                         <p className="text-[#333]">Со скидкой</p>
                                     </div>
                                 </div>
+
+
+                                {/* dropdown */}
                                 <div className="dropdown dropdown-end">
                                     <div onFocus={() => setOpenDropdown(prev => !prev)} onBlur={() => setOpenDropdown(prev => !prev)} tabIndex={0} role="button" className="text-[#333] flex items-center justify-end gap-[15px]">{tab}
                                         <svg className={`${isOpenDropdown && "rotate-180"} transition-all`} xmlns="http://www.w3.org/2000/svg" width="19" height="11" viewBox="0 0 19 11" fill="none">

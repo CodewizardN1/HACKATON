@@ -22,39 +22,40 @@ const Navbar = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const createUser = () => {
-    if (name && surename && username && password) {
-      setLoading(true)
-      axios
-        .post(`${api_url}/api/user/new`, {
-          firstName: name,
-          lastName: surename,
-          username: username,
-          password: password
-        })
-        .then((res) => {
-          setLoading(false)
-          document.getElementById("my_modal_2").close();
-          document.getElementById("my_modal_3").showModal();
-        });
-    }
-  };
+    const createUser = () => {
+        if (name && surename && username && password) {
+            setLoading(true)
+            axios
+                .post(`${api_url}/api/user/new`, {
+                    firstName: name,
+                    lastName: surename,
+                    username: username,
+                    password: password
+                })
+                .then((res) => {
+                    setLoading(false)
+                    document.getElementById("my_modal_2").close();
+                    document.getElementById("my_modal_3").showModal();
+                });
+        }
+    };
 
-  const loginUser = () => {
-    if (username && password) {
-      setLoading(true)
-      axios
-        .post(`${api_url}/api/user/login`, {
-          username: username,
-          password: password
-        })
-        .then((res) => {
-          document.getElementById("my_modal_3").close();
-          localStorage.setItem("token", res.data.token)
-          window.location.reload()
-        });
+    const loginUser = () => {
+        if (username && password) {
+            setLoading(true)
+            axios
+                .post(`${api_url}/api/user/login`, {
+                    username: username,
+                    password: password
+                })
+                .then((res) => {
+                    document.getElementById("my_modal_3").close();
+                    localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("username", username)
+                    window.location.href = "/add"
+                });
+        }
     }
-  }
 
   return (
     <div>

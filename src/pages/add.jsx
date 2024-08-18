@@ -6,6 +6,7 @@ import select from "../assets/select.png"
 import logo_info from "../assets/logo_info.png"
 import axios from "axios"
 import { api_url } from "../constants/constants"
+import Card from "../components/card/card"
 
 const Add = () => {
 
@@ -13,12 +14,19 @@ const Add = () => {
     const [url, setUrl] = useState()
     const [info, setInfo] = useState()
 
+    const [loading, setLoading] = useState(false)
+
     const [sale, setSale] = useState()
     const [prevPrice, setPrevPrice] = useState()
     const [price, setPrice] = useState()
 
+
+    // Product qo'shish
     const addProduct = () => {
+
+        // validatsiya
         if (name && url && info && sale && prevPrice && price) {
+            setLoading(true)
             axios.post(`${api_url}/api/product/create`, {
                 name: name,
                 url: url,
@@ -27,6 +35,7 @@ const Add = () => {
                 oldPrice: parseInt(prevPrice),
                 newPrice: parseInt(price)
             }, {
+                // token olish
                 headers: {
                     'token': localStorage.getItem("token")
                 }
@@ -43,39 +52,51 @@ const Add = () => {
 
                     <div className="mt-[26px]">
                         <Wrapper>
-                            <div>
-                                <h2 className="text-[#000] text-[20px] font-[700]">Добавить продукт</h2>
-                                <div className="mt-[20px] flex justify-between items-center gap-[40px]">
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                            <div className="flex justify-center flex-col items-center xl:items-start w-full">
+                                <h2 className="text-[#000] text-[20px] font-[700] xl:ml-0 text-center xl:text-start">Добавить продукт</h2>
+                                <div className="mt-[20px] w-full flex-wrap xl:flex-nowrap flex justify-center xl:justify-between items-center gap-[20px] xl:gap-[40px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">Название продукта</p>
                                         <input value={name} onChange={e => setName(e.target.value)} type="text" placeholder="Название продукта" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">URL-адрес изображения</p>
                                         <input value={url} onChange={e => setUrl(e.target.value)} type="text" placeholder="URL-адрес изображения" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">Информация</p>
                                         <input value={info} onChange={e => setInfo(e.target.value)} type="text" placeholder="Информация" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
                                 </div>
-                                <div className="mt-[20px] flex justify-between items-center gap-[40px]">
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                                <div className="mt-[20px] w-full flex-wrap xl:flex-nowrap flex justify-center xl:justify-between items-center gap-[20px] xl:gap-[40px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">Скидка</p>
                                         <input value={sale} onChange={e => setSale(e.target.value)} type="text" placeholder="Скидка" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">Предыдущая цена</p>
                                         <input value={prevPrice} onChange={e => setPrevPrice(e.target.value)} type="text" placeholder="Предыдущая цена" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
-                                    <div className="flex flex-col w-[32%] gap-[4px]">
+                                    <div className="flex flex-col w-10/12 xl:w-[32%] gap-[4px]">
                                         <p className="text-[15px]">Текущая цена</p>
                                         <input value={price} onChange={e => setPrice(e.target.value)} type="text" placeholder="Текущая цена" className="rounded-[1px] border border-[#CECDCD] bg-[rgba(255, 255, 255, 0.00)] focus:outline-none px-[8px] py-[8px]" />
                                     </div>
                                 </div>
 
-                                <p onClick={addProduct} className="cursor-pointer hover:bg-[#c74049] w-fit px-[30px] py-[15px] bg-[#E24C55] rounded-[1px] text-center text-white font-[500] text-[18px] mt-[32px]">Добавить продукт</p>
+                                <p onClick={addProduct} className="w-10/12 cursor-pointer hover:bg-[#c74049] xl:w-fit px-[30px] py-[15px] bg-[#E24C55] rounded-[1px] text-center text-white font-[500] text-[18px] mt-[32px]">Добавить продукт</p>
 
+                            </div>
+                        </Wrapper>
+                    </div>
+
+                    {loading && <div className="z-[1888888888888881322143] fixed left-0 top-0 w-full h-screen flex justify-center items-center bg-[#0000008a]">
+                        <div className="loading bg-white loading-spinner loading-lg"></div>
+                    </div>}
+
+                    <div className="mt-[50px] mx-10 xl:mx-0">
+                        <Wrapper>
+                            <div>
+                                <Card isOwn={true}/>
                             </div>
                         </Wrapper>
                     </div>

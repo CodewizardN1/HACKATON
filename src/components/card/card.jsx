@@ -3,7 +3,9 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { logo, product } from '../../assets';
 import axios from 'axios';
-const Card = ({text, img}) => {
+
+// isOwn, aynan o'zini qoshgan productlarini olish uchun
+const Card = ({text, img, isOwn}) => {
   const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
     const [data, setData] =useState([])
@@ -14,13 +16,20 @@ const Card = ({text, img}) => {
         setData(res.data.data)
       })
     })
-    console.log(data);
   return (
    
    <div className='flex justify-between flex-wrap items-center  z-[20] relative'>
     {loading? <span className="loading flex justify-center items-center loading-spinner loading-lg"></span> :
     <div className='flex justify-start flex-wrap gap-7 items-center'>
-      {data.map((item, i) => (
+
+        {/* oddiy filter */}
+      {data.filter(e => {
+        if (isOwn) {
+            return e.userId.username == localStorage.getItem("username");
+        } else {
+            return e;
+        }
+      }).map((item, i) => (
       <div key={i}>
       <div className=" w-[229px] h-[240px] bg-white rounded-[8px] relative">
  <div className="px-[0px] pt-3 flex justify-between items-center absolute z-50 w-[100%]">
