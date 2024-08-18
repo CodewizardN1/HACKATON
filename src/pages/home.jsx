@@ -13,7 +13,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { EffectFade, Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 
 // Icon va textli blocklar uchun alohida component
@@ -67,7 +67,12 @@ const Home = () => {
 
     // dropdown ishlashi uchun
     const [tab, setTab] = useState("По популярности")
-
+    const progressCircle = useRef(null);
+    const progressContent = useRef(null);
+    const onAutoplayTimeLeft = (s, time, progress) => {
+      progressCircle.current.style.setProperty('--progress', 1 - progress);
+      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+    };
     return (
         <div>
             <Layout>
@@ -226,30 +231,37 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="">
-
-                                    {/* Herodagi rasmlarga swiper */}
-                                    <Swiper
-                                        slidesPerView={1.3}
-                                        autoplay={{
-                                            delay: 2500,
-                                            disableOnInteraction: false,
-                                        }}
-                                        modules={[Autoplay]}
-                                    >
-                                        <SwiperSlide>
-                                            <img className="w-[847px] h-[378px] object-cover" src={hero} />
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img className="w-[847px] h-[378px] object-cover" src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img className="w-[847px] h-[378px] object-cover" src={hero} />
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img className="w-[847px] h-[378px] object-cover" src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                                        </SwiperSlide>
-                                    </Swiper>
-                                    <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2>
+                                    <Swiper 
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Navigation]}
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        className="mySwiper  z-[20] relative"
+      >
+        <SwiperSlide><img src={hero} alt="" />  <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <SwiperSlide><img src={hero} alt="" /> <h2 className="absolute left-[106px] top-[33px] text-white text-[28px] font-[700]">Продажа казанов и котелков с дочтавкой на дом!</h2></SwiperSlide>
+        <div className="autoplay-progress" slot="container-end">
+          <svg viewBox="0 0 48 48" ref={progressCircle}>
+            <circle cx="24" cy="24" r="20"></circle>
+          </svg>
+          <span ref={progressContent}></span>
+        </div>
+      </Swiper>
+                                   
                                 </div>
                             </div>
                         </Wrapper>

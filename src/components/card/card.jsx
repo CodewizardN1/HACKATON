@@ -18,7 +18,7 @@ const Card = ({text, img, isOwn}) => {
     })
   return (
    
-   <div className='flex justify-between flex-wrap items-center'>
+   <div className='flex justify-between flex-wrap items-center  z-[20] relative'>
     {loading? <span className="loading flex justify-center items-center loading-spinner loading-lg"></span> :
     <div className='flex justify-start flex-wrap gap-7 items-center'>
 
